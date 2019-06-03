@@ -1399,11 +1399,14 @@ run(void)
 		if (handler[ev.type])
 			handler[ev.type](&ev); /* call handler */
 }
+
 void
-runAutostart(void) {
+runAutostart(void)
+{
   //system("cd ~/.dwm; ./autostart_blocking.sh");
-  system("cd /home/hallam/.dwm; ./autostart.sh &");
+  system("feh --bg-fill ~/home/hallam/Pictures/975999.png");
 }
+
 void
 scan(void)
 {
@@ -2049,7 +2052,7 @@ updategeom(void)
 		if (mons->mw != sw || mons->mh != sh) {
 			dirty = 1;
 			mons->mw = mons->ww = sw;
-			mons->mh = mons->wh = sh;
+			mons->mh = mons->wh = sh - 20;
 			updatebarpos(mons);
 		}
 	}
@@ -2276,7 +2279,7 @@ main(int argc, char *argv[])
 	if (pledge("stdio rpath proc exec", NULL) == -1)
 		die("pledge");
 #endif /* __OpenBSD__ */
-	scan();
+        scan();
 	runAutostart();
 	run();
 	cleanup();
